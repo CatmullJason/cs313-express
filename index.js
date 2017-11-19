@@ -4,8 +4,8 @@ var bodyParser = require('body-parser');
 var url = require('url');
 
 var pg = require("pg"); // This is the postgres database connection module.
-const connectionString = "postgres://postgres:Arsenal1!@localhost:5432/isotopedb";
-
+//const connectionString = "postgres://postgres:Arsenal1!@localhost:5432/tickets";
+const connectionString = "postgres://gpdqeokklqlkaw:55559494c7673658470f8e816cd8615ead67cff1ca62dc27b41ee4c2d4a3c239@ec2-107-21-205-25.compute-1.amazonaws.com:5432/dd8kbik4stv9se";
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
