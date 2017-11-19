@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Nuc Med Tool Home</title>
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+	 crossorigin="anonymous">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+	 crossorigin="anonymous"></script>
+	<script src="script.js"></script>
+</head>
+
+<body>
+	<div class="container">
+		<h1>Tech Tool</h1>
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						Lbs. Conversion
+					</div>
+					<div class="card-block">
+						<h4 class="card-title">Convert Kgs. to Lbs.</h4>
+						<p class="card-text">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">Kgs.</span>
+								<input id="kilosinput" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1" onkeyup="calculateKilos()">
+							</div>
+							<br>
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">Lbs.</span>
+								<input id="lbsoutput" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
+							</div>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						Featured
+					</div>
+					<div class="card-block">
+						<h4 class="card-title">Placeholder</h4>
+						<p class="card-text">
+							<div class="input-group">
+								<span class="input-group-addon" id="basic-addon1">Lbs.</span>
+								<input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+							</div>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+							Isotope Table
+					</div>
+					<div class="card-block">
+						<h4 class="card-title">Isotope info</h4>
+						<p class="card-text">
+							<table id="isotopeTable" class="table">
+								<thead class="thead-inverse">
+									<tr>
+									<th>Isotope</th>
+									<th>Half Life</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr></tr>
+								</tbody>
+							</table>
+						</p>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</body>
+
+</html>

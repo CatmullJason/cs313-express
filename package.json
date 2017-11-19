@@ -1,0 +1,17 @@
+{
+  "name": "techtool",
+  "version": "1.0.0",
+  "description": "A tool for nuc med calculations",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Catmull",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "pg": "^7.4.0"
+  }
+}
