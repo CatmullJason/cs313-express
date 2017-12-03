@@ -22,20 +22,22 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<div class="card">
+				<div class="card"  style="height:100%">
 					<div class="card-header">
-						<strong>CONVERT KILOGRAMS TO POUNDS</strong>
+						<strong>KILOGRAMS/POUNDS CONVERSION</strong>
 					</div>
 					<div class="card-block">
 						<p class="card-text">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Kgs.</span>
 								<input id="kilosinput" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1" onkeyup="calculateKilos()">
+							</div><br>
+							<div style="display: flex; justify-content: center;">
+							<p><img src="bidirectional.png" alt="arrow" height="70" width="80"></p>
 							</div>
-							<br>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Lbs.</span>
-								<input id="lbsoutput" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
+								<input id="lbsoutput" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1" onkeyup="calculatePounds()">
 							</div>
 						</p>
 					</div>
@@ -61,15 +63,16 @@
 										<option value="I-123">I-123</option>
 									</optgroup>
 								</select>
+								<img src="decay.jpg" alt="decay calculation" height="37" width="225" align="right" class="imgDecay">
 							</div>
 							<br>
 							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">Duration</span>
+								<span class="input-group-addon" id="basic-addon1">Duration (Hours)</span>
 								<input id="timePassed" type="text" class="form-control" placeholder="hours" aria-describedby="basic-addon1" required>
 							</div>
 							<br>
 							<div class="input-group">
-								<span class="input-group-addon" id="basic-addon1">Current Activity</span>
+								<span class="input-group-addon" id="basic-addon1">Current Activity (mCi)</span>
 								<input id="currentActivity" type="text" class="form-control" placeholder="millicuries" aria-describedby="basic-addon1" required>
 							</div>
 							<br>
@@ -117,17 +120,18 @@
 				</div>
 			</div>
 			<div class="col">
-				<div class="card">
+				<div class="card"  style="height:100%">
 					<div class="card-header">
 						<strong>MEDICAL CONDITION LOOKUP</strong>
 					</div>
 					<div class="card-block">
 						<p class="card-text">
 							<h5>Search Medical Conditions</h5>
-							...Under Construction...
+							<p>(Examples: Diabetes, Leukemia)</p>
+							<br>
 							<div class="input-group">
-								<button type="submit" class="btn btn-primary" onclick="searchMedline()">Search</button>
-								<input id="medicalCondition" type="text" class="form-control" placeholder="Condition" aria-describedby="basic-addon1">
+								<span class="input-group-addon" id="basic-addon1">Begin Typing</span>
+								<input id="medicalCondition" type="text" class="form-control" onkeyup="searchMedline()" placeholder="Condition" aria-describedby="basic-addon1">
 							</div>
 							<div id="conditionResult">
 								<!--Information about the medical condition will appear here-->
@@ -152,6 +156,8 @@
 									<tr>
 										<th>ISOTOPE</th>
 										<th>HALF LIFE</th>
+										<th>DECAY TYPE</th>
+										<th>GAMMA ENERGY</th>
 									</tr>
 								</thead>
 								<tbody>

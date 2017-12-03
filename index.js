@@ -3,10 +3,12 @@ var app = express();
 var bodyParser = require('body-parser');
 var url = require('url');
 var cors = require('cors');
+const https = require('https');
+var httpsrequest = require('request');
 
 var pg = require("pg"); // This is the postgres database connection module.
-//const connectionString = "postgres://postgres:Arsenal1!@localhost:5432/isotopedb";
-const connectionString = "postgres://gpdqeokklqlkaw:55559494c7673658470f8e816cd8615ead67cff1ca62dc27b41ee4c2d4a3c239@ec2-107-21-205-25.compute-1.amazonaws.com:5432/dd8kbik4stv9se";
+const connectionString = "postgres://postgres:Arsenal1!@localhost:5432/isotopedb";
+//const connectionString = "postgres://gpdqeokklqlkaw:55559494c7673658470f8e816cd8615ead67cff1ca62dc27b41ee4c2d4a3c239@ec2-107-21-205-25.compute-1.amazonaws.com:5432/dd8kbik4stv9se";
 app.set('port', (process.env.PORT || 5000));
 
 //static page setup
@@ -95,6 +97,26 @@ function findDecayedActivity(halfLife, activity, time) {
 
 /************************************
 * SERVICE ENDPOINT:
+* Access Medline Plus API
+*************************************/
+app.get('/_search', function (request, response) {
+    var requestUrl = url.parse(request.url, true);
+    var str = "";
+    var searchTerm = String(requestUrl.query.q);
+    var address = 'https://wsearch.nlm.nih.gov/ws/query?db=healthTopics&retmax=1&rettype=brief&term=' + searchTerm;
+
+    httpsrequest(address, function (error, resp, body) {
+        if (!error && resp.statusCode == 200) {
+            var parseString = require('xml2js').parseString;
+            parseString(body, function (err, result) {
+                response.status(200).json(result);
+            });
+        }
+      });
+});
+
+/************************************
+* SERVICE ENDPOINT:
 * Calculate BMI
 *************************************/
 app.get('/calculateBMI', function (request, response) {
@@ -134,6 +156,24 @@ app.get('/calculateKilos', function (request, response) {
     var pounds = kgs * 2.2;
 
     var params = { pounds: pounds };
+
+    response.status(200).json(params);
+});
+
+/************************************
+* SERVICE ENDPOINT:
+* Calculate Pounds from given Kilos
+*************************************/
+app.get('/calculatePounds', function (request, response) {
+    var requestUrl = url.parse(request.url, true);
+
+    console.log("Query parameters: " + JSON.stringify(requestUrl.query));
+
+    var pounds = requestUrl.query.pounds;
+
+    var kgs = pounds / 2.2;
+
+    var params = { kgs: kgs };
 
     response.status(200).json(params);
 });

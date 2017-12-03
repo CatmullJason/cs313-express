@@ -32,6 +32,7 @@ body {
 .card {
     box-shadow: 10px 10px 30px #888888;
     border: 1px solid #AAA;
+    height: 100%;
 }
 
 .center {
@@ -42,4 +43,15 @@ body {
 
 .card-header {
     background-color: rgb(143, 206, 255);
+}
+
+.qt0 {
+    font-weight: bold;
+}
+
+.imgDecay {
+    margin-left: 35px;
+    border-radius: 8px;
+    box-shadow: 7px 7px 15px #888888; 
+    border: 1px solid #AAA;
 }
