@@ -47,17 +47,25 @@ app.get('/calculateDecay', function (request, response) {
     //isotope
     var isotope = String(requestUrl.query.isotope);
 
-    //time
-    var time = parseFloat(requestUrl.query.time);
-
-    //calculate BMI
-    var activity = parseFloat(requestUrl.query.activity);
+    //time and original activity
+    if (requestUrl.query.time != "" && requestUrl.query.activity != "") {
+        var time = parseFloat(requestUrl.query.time);
+        var activity = parseFloat(requestUrl.query.activity);
+    } else {
+        var time = 0;
+        var activity = 0;
+    }
 
     //half life
     var halfLife = assignHalfLife(isotope);
 
     //calculation
-    var decayedActivity = findDecayedActivity(halfLife, activity, time) + " mCi";
+    var decayedActivity;
+    if (time != 0 && activity != 0) {
+        decayedActivity = findDecayedActivity(halfLife, activity, time) + " mCi";
+    } else {
+        decayedActivity = "Invalid";
+    }
 
     var params = { decayedActivity: decayedActivity };
 
@@ -112,7 +120,7 @@ app.get('/_search', function (request, response) {
                 response.status(200).json(result);
             });
         }
-      });
+    });
 });
 
 /************************************
@@ -124,18 +132,22 @@ app.get('/calculateBMI', function (request, response) {
 
     console.log("Query parameters: " + JSON.stringify(requestUrl.query));
 
-    //weight
-    var kgs = requestUrl.query.kgs;
+    if (requestUrl.query.kgs != "" && requestUrl.query.feet != "" &&
+        requestUrl.query.inches != "") {
 
-    //height
-    var feetInInches = requestUrl.query.feet * 12;
+        //weight
+        var kgs = requestUrl.query.kgs;
 
-    var heightInInches = (+requestUrl.query.inches) + (+feetInInches);
+        //height
+        var feetInInches = requestUrl.query.feet * 12;
+        var heightInInches = (+requestUrl.query.inches) + (+feetInInches);
+        var heightInMeters = heightInInches.toFixed(2) * .0254;
 
-    var heightInMeters = heightInInches.toFixed(2) * .0254;
-
-    //calculate BMI
-    var bmi = parseFloat((kgs / heightInMeters) / heightInMeters).toFixed(2);
+        //calculate BMI
+        var bmi = parseFloat((kgs / heightInMeters) / heightInMeters).toFixed(2);
+    } else {
+        var bmi = "Invalid";
+    }
 
     var params = { bmi: bmi };
 
@@ -174,6 +186,59 @@ app.get('/calculatePounds', function (request, response) {
     var kgs = pounds / 2.2;
 
     var params = { kgs: kgs };
+
+    response.status(200).json(params);
+});
+
+/************************************
+* SERVICE ENDPOINT:
+* Calculate pediatric dose using Clark's Rule
+*************************************/
+app.get('/calculateClark', function (request, response) {
+    var requestUrl = url.parse(request.url, true);
+
+    console.log("Query parameters: " + JSON.stringify(requestUrl.query));
+
+    if (requestUrl.query.age != "" && requestUrl.query.weight != "" &&
+        requestUrl.query.dose != "") {
+        var age = requestUrl.query.age;
+        var weight = requestUrl.query.weight;
+        var dose = requestUrl.query.dose;
+
+        var clarksResult = (dose * (weight / 150)).toFixed(2);
+    } else {
+        var clarksResult = "Invalid";
+    }
+
+    var params = { clarksResult: clarksResult };
+
+    response.status(200).json(params);
+});
+
+/************************************
+* SERVICE ENDPOINT:
+* Calculate pediatric dose using Young's Rule
+*************************************/
+app.get('/calculateYoung', function (request, response) {
+    var requestUrl = url.parse(request.url, true);
+
+    console.log("Query parameters: " + JSON.stringify(requestUrl.query));
+
+    if (requestUrl.query.age != "" && requestUrl.query.weight != "" &&
+        requestUrl.query.dose != "") {
+        var age = requestUrl.query.age;
+        var weight = requestUrl.query.weight;
+        var dose = requestUrl.query.dose;
+
+        var step1 = (+age) + (+12);
+        var step2 = parseFloat(age / step1);
+        var youngsResult = parseFloat(dose * step2).toFixed(2);
+    } else {
+        var youngsResult = "Invalid";
+    }
+
+    console.log(youngsResult);
+    var params = { youngsResult: youngsResult };
 
     response.status(200).json(params);
 });

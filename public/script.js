@@ -82,3 +82,23 @@ function searchMedline() {
         }
     });
 }
+
+function calculateClark() {
+    var age = document.getElementById('childAge').value;
+    var weight = document.getElementById('childWeight').value;
+    var dose = document.getElementById('adultDose').value;
+
+    $.get("/calculateClark?age=" + age + "&weight=" + weight + "&dose=" + dose, function (result) {
+        document.getElementById('clarksResult').value = result.clarksResult;
+    })
+}
+
+function calculateYoung() {
+    var age = document.getElementById('childAge').value;
+    var weight = document.getElementById('childWeight').value;
+    var dose = document.getElementById('adultDose').value;
+
+    $.get("/calculateYoung?age=" + age + "&weight=" + weight + "&dose=" + dose, function (result) {
+        document.getElementById('youngsResult').value = result.youngsResult;
+    })
+}

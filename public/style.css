@@ -55,3 +55,7 @@ body {
     box-shadow: 7px 7px 15px #888888; 
     border: 1px solid #AAA;
 }
+
+.button {
+    cursor: pointer;
+}

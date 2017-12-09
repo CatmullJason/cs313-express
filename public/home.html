@@ -22,7 +22,7 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<div class="card"  style="height:100%">
+				<div class="card" style="height:100%">
 					<div class="card-header">
 						<strong>KILOGRAMS/POUNDS CONVERSION</strong>
 					</div>
@@ -30,14 +30,17 @@
 						<p class="card-text">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Kgs.</span>
-								<input id="kilosinput" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1" onkeyup="calculateKilos()">
-							</div><br>
+								<input id="kilosinput" type="text" class="form-control" aria-describedby="basic-addon1" onkeyup="calculateKilos()">
+							</div>
+							<br>
 							<div style="display: flex; justify-content: center;">
-							<p><img src="bidirectional.png" alt="arrow" height="70" width="80"></p>
+								<p>
+									<img src="bidirectional.png" alt="arrow" height="70" width="80">
+								</p>
 							</div>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Lbs.</span>
-								<input id="lbsoutput" type="text" class="form-control" placeholder="0" aria-describedby="basic-addon1" onkeyup="calculatePounds()">
+								<input id="lbsoutput" type="text" class="form-control" aria-describedby="basic-addon1" onkeyup="calculatePounds()">
 							</div>
 						</p>
 					</div>
@@ -53,7 +56,7 @@
 						<p class="card-text">
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Isotope</span>
-								<select class="custom-select" id="isoID">
+								<select class="custom-select button" id="isoID">
 									<optgroup label="PET/CT">
 										<option value="F-18">F-18</option>
 									</optgroup>
@@ -68,16 +71,17 @@
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Duration (Hours)</span>
-								<input id="timePassed" type="text" class="form-control" placeholder="hours" aria-describedby="basic-addon1" required>
+								<input id="timePassed" type="number" class="form-control" aria-describedby="basic-addon1" required>
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Current Activity (mCi)</span>
-								<input id="currentActivity" type="text" class="form-control" placeholder="millicuries" aria-describedby="basic-addon1" required>
+								<input id="currentActivity" type="number" class="form-control" aria-describedby="basic-addon1"
+								 required>
 							</div>
 							<br>
 							<div class="input-group">
-								<input type="button" class="btn btn-primary" onclick="calculateDecay()" value="Submit"></input>
+								<input type="button" class="btn btn-primary button" onclick="calculateDecay()" value="Submit"></input>
 								<input id="decayResult" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
 							</div>
 						</p>
@@ -97,30 +101,30 @@
 							<h5>Weight</h5>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Kgs.</span>
-								<input id="weightKilos" type="number" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+								<input id="weightKilos" type="number" class="form-control"  aria-describedby="basic-addon1">
 							</div>
 							<br>
 							<h5>Height</h5>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Feet</span>
-								<input id="heightFeet" type="number" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+								<input id="heightFeet" type="number" class="form-control" aria-describedby="basic-addon1">
 							</div>
 							<br>
 							<div class="input-group">
 								<span class="input-group-addon" id="basic-addon1">Inches</span>
-								<input id="heightInches" type="number" class="form-control" placeholder="0" aria-describedby="basic-addon1">
+								<input id="heightInches" type="number" class="form-control" aria-describedby="basic-addon1">
 							</div>
 							<br>
 							<div class="input-group">
-								<input type="button" class="btn btn-primary" onclick="calculateBMI()" value="Submit"></input>
-								<input id="bmiResult" type="number" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
+								<input type="button" class="btn btn-primary button" onclick="calculateBMI()" value="Submit"></input>
+								<input id="bmiResult" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
 							</div>
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="col">
-				<div class="card"  style="height:100%">
+				<div class="card" style="height:100%">
 					<div class="card-header">
 						<strong>MEDICAL CONDITION LOOKUP</strong>
 					</div>
@@ -135,6 +139,58 @@
 							</div>
 							<div id="conditionResult">
 								<!--Information about the medical condition will appear here-->
+							</div>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<br>
+		<div class="row">
+			<div class="col">
+				<div class="card">
+					<div class="card-header">
+						<strong>FDG PEDIATRIC DOSING</strong>
+					</div>
+					<div class="card-block">
+						<p class="card-text">
+							<div class="row">
+								<div class="col">
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1">Age:</span>
+										<input id="childAge" type="number" class="form-control" aria-describedby="basic-addon1">
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1">Weight (lbs):</span>
+										<input id="childWeight" type="number" class="form-control" aria-describedby="basic-addon1">
+									</div>
+								</div>
+								<div class="col">
+									<div class="input-group">
+										<span class="input-group-addon" id="basic-addon1">Adult Dosage:</span>
+										<input id="adultDose" type="number" class="form-control" aria-describedby="basic-addon1">
+									</div>
+								</div>
+							</div>
+							<br>
+							<br>
+							<div class="row">
+								<div class="col" style="margin-left: 100px">
+									<h5>Clark's Rule</h5>
+									<div class="input-group">
+										<input type="button" class="btn btn-primary button" onclick="calculateClark()" value="Calculate"></input>
+										<input id="clarksResult" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
+									</div>
+								</div>
+								<div class="col" style="margin-right: 100px">
+									<h5>Young's Rule</h5>
+									<div class="input-group">
+										<input type="button" class="btn btn-primary button" onclick="calculateYoung()" value="Calculate"></input>
+										<input id="youngsResult" type="text" class="form-control" placeholder="Result" aria-describedby="basic-addon1" disabled>
+									</div>
+								</div>
 							</div>
 						</p>
 					</div>
