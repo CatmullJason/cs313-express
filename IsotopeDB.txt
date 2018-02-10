@@ -1,0 +1,30 @@
+CREATE TABLE isotope (
+	name VARCHAR(80) PRIMARY KEY NOT NULL,
+	halflife VARCHAR(80) NOT NULL,
+	decaytype VARCHAR(80) NOT NULL,
+	gammaenergy VARCHAR(80) NOT NULL
+);
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Technetium-99m', '6.01 hours', 'Isomeric Transition', '140');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Flourine-18', '109.77 minutes', 'Positron', '511');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Iodine-123', '13.3 hours', 'Electron Capture', '159');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Xenon-133', '5.24 days', 'Beta', '81');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Iodine-131', '8.02 days', 'Beta', '364');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Indium-111', '2.80 days', 'Electron Capture', '171 & 245');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Thallium-201', '3.04 days', 'Electron Capture', '69-83 & 167');
+
+INSERT INTO isotope (name, halflife, decaytype, gammaenergy)
+    VALUES ('Yttrium', '2.67 days', 'Beta', '-');

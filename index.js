@@ -231,8 +231,8 @@ app.get('/calculateYoung', function (request, response) {
         var dose = requestUrl.query.dose;
 
         var step1 = (+age) + (+12);
-        var step2 = parseFloat(age / step1);
-        var youngsResult = parseFloat(dose * step2).toFixed(2);
+        var step2 = parseFloat((+age) / (+step1));
+        var youngsResult = parseFloat((+dose) * (+step2)).toFixed(2);
     } else {
         var youngsResult = "Invalid";
     }
