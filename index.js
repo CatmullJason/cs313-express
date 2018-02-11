@@ -8,7 +8,7 @@ var httpsrequest = require('request');
 
 var pg = require("pg"); // This is the postgres database connection module.
 //const connectionString = "postgres://postgres:Arsenal1!@localhost:5432/isotopedb";
-const connectionString = "postgres://gpdqeokklqlkaw:55559494c7673658470f8e816cd8615ead67cff1ca62dc27b41ee4c2d4a3c239@ec2-107-21-205-25.compute-1.amazonaws.com:5432/dd8kbik4stv9se";
+const connectionString = "postgres://ubjbfumvalgbyo:bf62c2fcd54fad66618f522de4288c49272f4da683beb9556f5df7f38c408194@ec2-23-21-229-48.compute-1.amazonaws.com:5432/dacsr51ikloa87";
 app.set('port', (process.env.PORT || 5000));
 
 //static page setup
